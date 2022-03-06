@@ -13,7 +13,7 @@ public class Worker implements IWorker {
 
     @Getter private final IPersonalInfo personalInfo;
 
-    private Map<LocalDate, IShift> shiftsMap = new HashMap<>();
+    private final Map<LocalDate, IShift> shiftsMap = new HashMap<>();
 
     @Override
     public boolean assignShift(IShift shift) {
@@ -25,8 +25,8 @@ public class Worker implements IWorker {
     }
 
     @Override
-    public boolean unassignShift(IShift shift) {
-        return shiftsMap.remove(shift.getDate()) != null;
+    public boolean unassignShift(LocalDate shiftDate) {
+        return shiftsMap.remove(shiftDate) != null;
     }
 
     @Override
